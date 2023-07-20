@@ -1,6 +1,6 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    Rails.logger.info '###############################subscribed'
+    Rails.logger.info "###############################subscribed: #{params}"
     if params[:room_id]
       stream_from "room_channel_#{params[:room_id]}"
     else
@@ -13,8 +13,6 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak
-    Rails.logger.info '###############################speak'
-
     puts params
 
     if params[:room_id]
